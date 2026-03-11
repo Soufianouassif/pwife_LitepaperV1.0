@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEPEWIFE (PWIFE) Whitepaper</title>
+  <style>
+    :root{
+      --bg:#07070b;
+      --panel:#0f1118;
+      --text:#f5f7fb;
+      --muted:#b8bfd0;
+      --green:#14F195;
+      --purple:#9945FF;
+      --border:rgba(255,255,255,0.08);
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(153,69,255,.20), transparent 30%),
+        radial-gradient(circle at bottom, rgba(20,241,149,.14), transparent 30%),
+        linear-gradient(180deg, #05060a 0%, #0b0e17 55%, #05060a 100%);
+      color:var(--text);
+      line-height:1.75;
+    }
+
+    .container{
+      width:min(1000px, 92%);
+      margin:0 auto;
+    }
+
+    .hero{
+      padding:64px 0 42px;
+      text-align:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    .logo-wrap{
+      display:inline-block;
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:28px;
+      background:rgba(255,255,255,0.03);
+      box-shadow:0 0 40px rgba(153,69,255,.18);
+      animation: float 5.5s ease-in-out infinite;
+    }
+
+    .logo{
+      width:220px;
+      max-width:75vw;
+      display:block;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+
+    .badge{
+      display:inline-block;
+      margin-top:24px;
+      padding:8px 14px;
+      border:1px solid rgba(20,241,149,.25);
+      border-radius:999px;
+      color:var(--green);
+      background:rgba(20,241,149,.08);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:20px 0 10px;
+      font-size:clamp(38px, 7vw, 68px);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+    }
+
+    .subtitle{
+      margin:0 auto;
+      max-width:760px;
+      font-size:clamp(18px, 2.8vw, 26px);
+      color:#e8ebf5;
+    }
+
+    .sections{
+      padding:36px 0 70px;
+    }
+
+    .section{
+      margin:22px 0;
+      padding:28px;
+      border:1px solid var(--border);
+      border-radius:24px;
+      background:rgba(255,255,255,0.03);
+      opacity:0;
+      transform:translateY(24px);
+      animation:fadeUp .8s ease forwards;
+    }
+
+    .section:nth-child(1){animation-delay:.03s}
+    .section:nth-child(2){animation-delay:.06s}
+    .section:nth-child(3){animation-delay:.09s}
+    .section:nth-child(4){animation-delay:.12s}
+    .section:nth-child(5){animation-delay:.15s}
+    .section:nth-child(6){animation-delay:.18s}
+    .section:nth-child(7){animation-delay:.21s}
+    .section:nth-child(8){animation-delay:.24s}
+    .section:nth-child(9){animation-delay:.27s}
+    .section:nth-child(10){animation-delay:.30s}
+    .section:nth-child(11){animation-delay:.33s}
+    .section:nth-child(12){animation-delay:.36s}
+    .section:nth-child(13){animation-delay:.39s}
+    .section:nth-child(14){animation-delay:.42s}
+    .section:nth-child(15){animation-delay:.45s}
+
+    @keyframes fadeUp{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    h2{
+      margin:0 0 16px;
+      font-size:clamp(24px, 4vw, 34px);
+      line-height:1.2;
+      color:var(--green);
+    }
+
+    h3{
+      margin:18px 0 12px;
+      font-size:22px;
+      color:#fff;
+    }
+
+    p{
+      margin:0 0 14px;
+      color:var(--muted);
+    }
+
+    .lead{
+      color:#eef1fa;
+    }
+
+    ul{
+      margin:8px 0 14px 0;
+      padding-left:20px;
+      color:var(--muted);
+    }
+
+    li{margin:8px 0}
+
+    .meta-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .meta-card{
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      background:rgba(0,0,0,.22);
+    }
+
+    .meta-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--purple);
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .meta-value{
+      font-size:18px;
+      font-weight:700;
+      color:#fff;
+      line-height:1.45;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:14px;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid var(--border);
+    }
+
+    th,td{
+      padding:14px 16px;
+      text-align:left;
+      border-bottom:1px solid var(--border);
+    }
+
+    th{
+      background:rgba(153,69,255,.15);
+      color:var(--green);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+
+    tr:nth-child(even) td{
+      background:rgba(255,255,255,.02);
+    }
+
+    .roadmap-box{
+      margin-top:12px;
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(0,0,0,.22);
+    }
+
+    .roadmap-title{
+      color:var(--green);
+      font-weight:700;
+      font-size:20px;
+      margin-bottom:10px;
+    }
+
+    footer{
+      padding:28px 0 50px;
+      color:#7f8798;
+      text-align:center;
+      font-size:14px;
+    }
+
+    @media (max-width:700px){
+      .section{padding:20px}
+      .meta-grid{grid-template-columns:1fr}
+      th,td{padding:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="container">
+      <div class="logo-wrap">
+        <img class="logo" src="pepewife-coin.png" alt="PEPEWIFE logo">
+      </div>
+      <div class="badge">PEPE WIFE LITE PAPER V 1.0</div>
+      <h1>PEPEWIFE (PWIFE)</h1>
+      <p class="subtitle">Pepe created the meme, but she builds the future.</p>
+    </div>
+  </div>
+
+  <main class="container sections">
+
+    <section class="section">
+      <h2>1) Executive Summary</h2>
+      <p class="lead">PEPEWIFE (PWIFE) is a Solana-based meme token designed to build a long-term, community-driven movement inspired by internet culture, with a disciplined launch approach focused on transparency and responsible liquidity management. The project follows a gradual evolution model: it launches with a clear early utility through a Tap-to-Earn application, then expands over time with additional ecosystem features such as staking and broader community initiatives, supported by vesting schedules designed to reduce sudden sell pressure and strengthen trust.</p>
+    </section>
+
+    <section class="section">
+      <h2>2) Background &amp; Narrative</h2>
+      <p>Meme coins have evolved from simple internet jokes into global digital communities capable of influencing culture and markets. However, the sector has also gained a negative reputation due to short-lived projects driven primarily by hype, with limited transparency and weak execution plans.</p>
+      <p>PEPEWIFE presents a different narrative: a community-first meme project that balances culture and creativity with clear commitments around launch discipline, token distribution, and transparency.</p>
+    </section>
+
+    <section class="section">
+      <h2>3) Vision &amp; Objectives</h2>
+      <p><strong>Vision:</strong> Build a community-driven meme token that evolves over time rather than relying solely on short-term speculation.</p>
+      <p><strong>Objectives:</strong></p>
+      <ul>
+        <li>Build a strong, global community powered by participation and creativity.</li>
+        <li>Launch on Solana with clear transparency commitments and responsible liquidity practices.</li>
+        <li>Deliver early utility (Tap-to-Earn) and expand later into staking and additional ecosystem initiatives.</li>
+        <li>Support sustainable growth through gradual token releases (vesting) to reduce market shocks.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>4) Why Solana</h2>
+      <p>Solana was chosen because it offers:</p>
+      <ul>
+        <li>Low fees suitable for frequent community interactions and micro-rewards.</li>
+        <li>High throughput and fast confirmation times.</li>
+        <li>A strong DeFi and DEX ecosystem (e.g., Raydium) for liquidity and accessibility.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>5) Core Principles</h2>
+      <ul>
+        <li>Community First: The project’s strength and growth are driven by its community.</li>
+        <li>Transparency: Clear communication around allocation, vesting, official wallets, and proofs of key actions (locks, authorities).</li>
+        <li>Long-Term Orientation: A focus on sustainable development rather than short-term hype cycles.</li>
+        <li>Culture &amp; Creativity: Turning meme energy into consistent community activity and participation.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>6) Token Details</h2>
+      <div class="meta-grid">
+        <div class="meta-card">
+          <div class="meta-label">Token Name</div>
+          <div class="meta-value">PEPEWIFE</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">Symbol</div>
+          <div class="meta-value">PWIFE</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">Network</div>
+          <div class="meta-value">Solana (SPL Token)</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">Total Supply</div>
+          <div class="meta-value">100,000,000,000,000 PWIFE (100T)</div>
+        </div>
+      </div>
+
+      <h3>Security Authorities (Commitments)</h3>
+      <ul>
+        <li>Mint Authority: Will be revoked after launch to prevent additional supply inflation.</li>
+        <li>Freeze Authority: Not enabled.</li>
+        <li>Official Token Address: Will be published through official channels at launch.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>7) Tokenomics</h2>
+      <p><strong>Total Supply:</strong> 100T PWIFE</p>
+      <p><strong>Token Distribution</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Allocation</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Private Sale</td><td>3%</td></tr>
+          <tr><td>Public Sale</td><td>17%</td></tr>
+          <tr><td>Liquidity</td><td>30%</td></tr>
+          <tr><td>Community</td><td>13%</td></tr>
+          <tr><td>Marketing</td><td>10%</td></tr>
+          <tr><td>Team</td><td>5%</td></tr>
+          <tr><td>Ecosystem &amp; Development</td><td>22%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>8) Vesting &amp; Release Schedule</h2>
+      <p>To strengthen trust, align incentives, and reduce sudden sell pressure, PWIFE allocations follow a gradual release approach:</p>
+      <ul>
+        <li>Team (5%): 12-month vesting (released gradually).</li>
+        <li>Private Sale (3%): 1-month vesting (released gradually over one month).</li>
+        <li>Public Sale (17%): 1-month vesting (released gradually over one month).</li>
+      </ul>
+      <p>A detailed vesting schedule (dates and release percentages) will be published prior to launch via official channels.</p>
+    </section>
+
+    <section class="section">
+      <h2>9) Liquidity &amp; Launch Plan</h2>
+      <ul>
+        <li>Liquidity Allocation: 30% of the total supply is allocated for launch liquidity.</li>
+        <li>DEX Launch: Liquidity will be added on Solana DEX platforms such as Raydium.</li>
+        <li>Liquidity Lock: 30% of the launch liquidity (LP) will be locked for 12 months (one full year) to support trust and market stability.</li>
+        <li>Lock Proof: The official liquidity lock proof (locker link / transaction proof) will be published immediately after execution.</li>
+      </ul>
+      <p><strong>Note:</strong> The specific lock provider/solution will be selected prior to launch and publicly shared.</p>
+    </section>
+
+    <section class="section">
+      <h2>10) Token Utility</h2>
+      <p>PWIFE is designed to evolve beyond trading by enabling community-driven participation and reward mechanisms.</p>
+
+      <h3>10.1 Early Utility (Initial Phase)</h3>
+      <p><strong>Tap-to-Earn App</strong></p>
+      <p>The project will develop a Tap-to-Earn application that allows community members to participate and earn rewards under published rules (e.g., tasks, engagement, content, and community challenges).</p>
+
+      <h3>10.2 Future Utility (To Be Announced)</h3>
+      <p><strong>Staking System</strong></p>
+      <p>A staking system will be announced later with goals such as:</p>
+      <ul>
+        <li>Rewarding long-term supporters.</li>
+        <li>Supporting community stability and reducing sell pressure.</li>
+        <li>Enabling structured reward programs within the ecosystem.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>11) Ecosystem &amp; Treasury (Ecosystem &amp; Development: 22%)</h2>
+      <p>22% of the supply is allocated to support long-term ecosystem growth, including:</p>
+      <ul>
+        <li>Development of the Tap-to-Earn app and infrastructure.</li>
+        <li>Future community tools and initiatives.</li>
+        <li>Gradual expansions and partnerships based on available resources.</li>
+      </ul>
+      <p>Official wallets associated with development, marketing, and community allocations will be published through official channels to enhance transparency.</p>
+    </section>
+
+    <section class="section">
+      <h2>12) Roadmap</h2>
+
+      <div class="roadmap-box">
+        <div class="roadmap-title">Phase 1 — Foundation</div>
+        <ul>
+          <li>Develop the project concept and identity</li>
+          <li>Launch official channels</li>
+          <li>Build the community</li>
+          <li>Launch the private sale</li>
+          <li>Publish the whitepaper</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-box">
+        <div class="roadmap-title">Phase 2 — Growth</div>
+        <ul>
+          <li>Marketing campaigns and community expansion</li>
+          <li>Preparation for public participation (public sale)</li>
+          <li>Initial strategic partnerships</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-box">
+        <div class="roadmap-title">Phase 3 — Launch</div>
+        <ul>
+          <li>Token deployment on Solana</li>
+          <li>Liquidity addition on DEX</li>
+          <li>Trading launch</li>
+          <li>Publish transparency proofs: token address, mint authority revocation, liquidity lock proof, official wallets</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-box">
+        <div class="roadmap-title">Phase 4 — Expansion</div>
+        <ul>
+          <li>Global community growth</li>
+          <li>Collaborations with influencers and communities</li>
+          <li>Work toward CEX listings (as a potential goal, not a promise)</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-box">
+        <div class="roadmap-title">Phase 5 — Long-Term Vision</div>
+        <ul>
+          <li>Gradual ecosystem expansion (Tap-to-Earn → Staking → additional tools/initiatives)</li>
+          <li>Strengthen the project’s presence in the Solana and broader crypto ecosystem through ongoing development and partnerships</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>13) Security &amp; Transparency</h2>
+      <p>PEPEWIFE emphasizes responsible development and transparency, including:</p>
+      <ul>
+        <li>Revoking mint authority after launch to prevent additional minting.</li>
+        <li>Keeping freeze authority disabled.</li>
+        <li>Locking launch liquidity for one year and publishing proof.</li>
+        <li>Using vesting mechanisms for team and sale allocations.</li>
+        <li>Continuous communication and updates to the community.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>14) Risk Disclosure</h2>
+      <p>The cryptocurrency market is highly volatile and involves significant risk. PWIFE may be affected by market sentiment, liquidity conditions, price volatility, and execution risks. This document is for informational purposes only and does not constitute financial or investment advice. Participants should conduct their own research before interacting with digital assets.</p>
+    </section>
+
+    <section class="section">
+      <h2>15) Conclusion</h2>
+      <p>PEPEWIFE (PWIFE) aims to be a long-term, community-first meme token on Solana, combining culture-driven growth with clear transparency commitments: one-year liquidity lock, mint authority revocation, early Tap-to-Earn utility, and a gradual roadmap that expands into staking and broader ecosystem initiatives over time.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    © PEPEWIFE — Whitepaper (Final Professional English Version)
+  </footer>
+</body>
+</html>
